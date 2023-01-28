@@ -4,20 +4,26 @@
   "description": "Bringing communities together by connecting neighbours.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yusufrahmn/Gather.git"
   },
-  "author": "@yusufrahman,",
+  "author": "@yusufrahman,@foil16",
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/yusufrahmn/Gather/issues"
   },
   "homepage": "https://github.com/yusufrahmn/Gather#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express.js": "^1.0.0",
+    "knex": "^2.4.2",
+    "nodemon": "^2.0.20",
+    "pg": "^8.9.0"
   }
 }
