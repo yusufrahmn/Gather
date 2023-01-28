@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/yusufrahmn/Gather/issues"
   },
-  "homepage": "https://github.com/yusufrahmn/Gather#readme"
+  "homepage": "https://github.com/yusufrahmn/Gather#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
