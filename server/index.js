@@ -15,8 +15,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(initialPath, "login.html"))
 })
 
-app.get('register', (req, res)=>{
+app.get('/register', (req, res)=>{
   res.sendFile(path.join(initialPath, "register.html"))
+})
+
+app.get('/home', (req, res)=>{
+  res.sendFile(path.join(initialPath, "login.html"))
 })
 
 
