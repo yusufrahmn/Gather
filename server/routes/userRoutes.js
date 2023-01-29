@@ -1,23 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
-console.log('HIIII1');
-
-router.get('/api/users', (req, res) => {
-    res.status(200).json({ "futureFunction": "Get users" });
+router.get('/', (req, res) => {
+    res.status(200).json({ message: "Get users" });
 });
 
-router.post('/api/users', (req, res) => {
-    console.log('HIIII2');
-    res.json({ "futureFunction": "Create new user" });
+
+router.post('/', (req, res) => {
+    res.json({ message: "Create new user" });
 });
 
-router.put('/api/users', (req, res) => {
-    res.status(200).json({ "futureFunction": "Update users" });
+router.put('/', (req, res) => {
+    res.status(200).json({ message: "Update users" });
 });
 
-router.delete('/api/users', (req, res) => {
-    res.status(200).json({ "futureFunction": "Delete user" });
+router.delete('/', (req, res) => {
+    res.status(200).json({ message: "Delete user" });
 });
 
 module.exports = router;

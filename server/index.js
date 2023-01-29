@@ -23,8 +23,7 @@ app.use(express.static(initialPath));
 
 // ========== BACK END ==========
 
-const userRoutes = require('./routes/userRoutes.js');
-app.use('/api/users', userRoutes);
+app.use('/api/users', require('./routes/userRoutes'));
 
 app.get('/', (req, res) => {
     res.send('wssp my g')
@@ -44,9 +43,11 @@ app.get('/home', (req, res)=>{
   res.sendFile(path.join(initialPath, "login.html"))
 })
 
+
+
 // APP LISTEN
 
 app.listen(3000, function () {
-  console.log('✅ Gather is now live on port 3000!');
+  console.log('✅ 🫥 Gather is now live on port 3000!');
 });
 
