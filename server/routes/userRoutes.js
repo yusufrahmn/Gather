@@ -7,15 +7,12 @@ const collection = mongo.db("GatherDB").collection("Users");
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-
-router.get('/', async (req, res) => {
-    res.status(200).json({ message: "Get users" });
-});
+const authenticate = require('../middleware/authMiddleware');
 
 // GENERATE TOKEN (FOR LOGIN AND REGISTRATION)
 
 const generateToken = (id) => {
-    return JsonWebTokenError.sign({ id }. process.env.JWT_SECRET, {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '30d'
     })
 }
@@ -67,6 +64,12 @@ router.post('/', async (req, res) => {
         location,
         token: generateToken(user._id)
     });
+});
+
+// GET LOGGED IN USER
+
+router.get('/me', authenticate, async (req, res) => {
+    res.status(200).json({ message: "Get users" });
 });
 
 router.put('/:uid', async (req, res) => {

@@ -2,9 +2,6 @@
 
 const express = require('express');
 const path = require('path');
-
-// Some More Stuff
-
 const dotenv = require('dotenv').config();
 
 // Mongo
