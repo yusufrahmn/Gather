@@ -5,7 +5,7 @@ var userInfo
 function goRegister(){
     window.location.replace("register.html");
 }
-function postRequest(){
+function postRequestRegister(){
     const options ={
         method: 'POST',
         headers: {
@@ -25,7 +25,7 @@ function getLocation(){
         console.log(position);
         var coords = [position.coords.latitude, position.coords.longitude]
         Info.location = coords
-        postRequest();
+        postRequestRegister();
         
     };
       
@@ -78,28 +78,19 @@ function checkCheck(){
     console.log(checklogin)
 }
 
+function postLogin(){
+    const options ={
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(checklogin)
 
+    }
+    fetch('api/users/login',options)
+        .then(res => res.json())
+        .then(data => console.log(data))
 
-function getRequest(){
-    fetch('api/users/login')
-  .then((response) => response.json())
-  .then((data) => console.log(data));
 }
 
-/*function postRequest(){
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "/api/users/login");
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("RegisterInfo", "application/json");
-
-    xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-        console.log(xhr.status);
-        console.log(xhr.responseText);
-    }};
-
-    let data = Info
-
-    xhr.send(data);
-
-}*/
+ 
