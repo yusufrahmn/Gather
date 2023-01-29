@@ -101,6 +101,8 @@ function postLogin(){
                 wrongPass()
             }
             res.json() .then(data => console.log(data))
+            userInfo.Name = data.name
+            userInfo.Token = data.token
         })
             
         
