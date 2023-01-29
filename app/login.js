@@ -1,8 +1,23 @@
 var Info = {}
 var checklogin ={}
+var userInfo
 
 function goRegister(){
     window.location.replace("register.html");
+}
+function postRequest(){
+    const options ={
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(Info)
+    }
+    fetch('api/users/',options)
+        .then(res => res.json())
+        .then(data => console.log(data))
+    userInfo.Name  = data.name
+    userInfo.Token = data.token
 }
 
 function getLocation(){
@@ -10,6 +25,7 @@ function getLocation(){
         console.log(position);
         var coords = [position.coords.latitude, position.coords.longitude]
         Info.location = coords
+        postRequest();
         
     };
       
@@ -21,7 +37,7 @@ function getLocation(){
 }
 
 function takeName(){
-    Info.Name = document.getElementById('Name').value;
+    Info.name = document.getElementById('Name').value;
 }
 
 
@@ -32,18 +48,22 @@ function takePassword(){
     var string2 = document.getElementById('CPass').value
 
     if( string1.localeCompare(string2) == 0){
-        Info.Password = document.getElementById('Pass').value
+        Info.password = document.getElementById('Pass').value
         errorMes.classList.remove("openErrorMessage")
     }else{
         errorMes.classList.add("openErrorMessage")
     }
 }
 
+function takeEmail(){
+    Info.email = document.getElementById('newEmail').value
+}
+
 function checkEmail(){
-    checklogin.Email = document.getElementById('email').value
+    checklogin.email = document.getElementById('email').value
 }
 function checkPass(){
-    checklogin.Password = document.getElementById('password').value
+    checklogin.password = document.getElementById('password').value
 }
 
 function backLogin(){
@@ -58,16 +78,7 @@ function checkCheck(){
     console.log(checklogin)
 }
 
-function postRequest(){
-    const options ={
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify(Info)
-    }
-    fetch('api/users/',options);
-}
+
 
 function getRequest(){
     fetch('api/users/login')
