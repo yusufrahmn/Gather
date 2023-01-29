@@ -79,6 +79,7 @@ function checkCheck(){
 }
 
 function postLogin(){
+    var status = 0
     const options ={
         method: 'POST',
         headers: {
@@ -88,9 +89,35 @@ function postLogin(){
 
     }
     fetch('api/users/login',options)
-        .then(res => res.json())
-        .then(data => console.log(data))
+        .then(res => {
+            status = res.status
+            console.log(status)
+            if(status == 200){
+                console.log("hi")
+                window.location.replace("dashboard.html")
+                rightPass()
+                
+            }else{
+                wrongPass()
+            }
+            res.json() .then(data => console.log(data))
+        })
+            
+        
 
+    
+
+    
+
+}
+
+function wrongPass(){
+    loginErrorMessage.classList.add("openErrorMessage")
+}
+
+
+function rightPass(){
+    loginErrorMessage.classList.remove("openErrorMessage")
 }
 
  
