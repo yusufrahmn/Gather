@@ -22,7 +22,7 @@ let initialPath = path.join(__dirname, "public");
 app.use(bodyParser.json());
 app.use(express.static(initialPath));
 
-app.get('/login∂', (req, res) => {
+app.get('/login', (req, res) => {
   res.sendFile(path.join(initialPath, "login.html"))
 })
 
@@ -43,14 +43,3 @@ module.exports={
   mongo: mongo
 }
 
-app.get('/login', (req, res) => {
-  res.json({ message: 'Login time'})
-});
-
-app.get('/register', (req, res) => {
-  res.json({message: 'Register time'})
-});
-
-app.get('/home',(req, res) => {
-  res.json({message: 'Home page'})
-})
