@@ -1,0 +1,21 @@
+/* CSS styles */
+h1 {
+    font-family: Impact, sans-serif;
+    color: #4F77FF;
+    }
+    h2 {
+      font-family: Arial, sans-serif;
+        font-size: 16px;
+    }
+    body{
+      background-image: linear-gradient(to right, rgba(255,255,0,.2), rgba(0,255,255,.3));
+    }
+    hr{
+      color: #4F77FF;
+    }
+    
+    .box{
+      width: 25%;
+      height: 150px;
+      border: 2px solid black;
+    }
