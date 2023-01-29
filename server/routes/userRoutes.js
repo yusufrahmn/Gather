@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { mongo } = require('../index');
+const { ObjectId } = require('mongodb');
 const usersCollection = mongo.db("GatherDB").collection("Users");
 
 router.get('/', async (req, res) => {
@@ -19,15 +20,23 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:uid', async (req, res) => {
-    let user = await usersCollection.findOne(req.params.uid)
+    let { name, email } = req.body;
+    if (!name || !email) return res.status(400).json({ error: "Invalid Request" });
+
+    let user = await usersCollection.updateOne({ _id: ObjectId(req.params.uid) }, {
+        $set: {
+            name: name,
+            email: email
+        }
+    });
     if (!user) return res.status(400).json({ error: "Invalid Request" });
     res.status(200).json(user);
 });
 
 router.delete('/:uid', async (req, res) => {
-    let user = await usersCollection.findOne(req.params.uid)
+    let user = await usersCollection.deleteOne({ _id: ObjectId(req.params.uid) })
     if (!user) return res.status(400).json({ error: "Invalid Request" });
-    res.status(200).json({ message: "Delete user ${req.params._id" })
+    res.status(200).json({ message: `Delete user ${req.params._id}` })
 });
 
 module.exports = router;
