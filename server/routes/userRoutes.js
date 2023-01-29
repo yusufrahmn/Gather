@@ -10,17 +10,11 @@ router.post('/', (req, res) => {
     res.json({ message: "Create new user" });
 });
 
-<<<<<<< HEAD
-router.put('/', (req, res) => {
-    res.status(200).json({ message: "Update users" });
-=======
-
-router.put('/uid', (req, res) => {
+router.put('/:uid', (req, res) => {
     res.status(200).json({ message: 'Update users ${req.params._id}' })
->>>>>>> f720299 (Hulk is quite beautiful)
 });
 
-router.delete('/uid', (req, res) => {
+router.delete('/:uid', (req, res) => {
     res.status(200).json({ message: "Delete user ${req.params._id" })
 });
 
