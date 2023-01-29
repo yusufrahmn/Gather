@@ -41,7 +41,7 @@ app.get('/register', (req, res)=>{
 })
 
 app.get('/home', (req, res)=>{
-  res.sendFile(path.join(frontEnd, "login.html"))
+  res.sendFile(path.join(frontEnd, "dashboard.html"))
 })
 
 
