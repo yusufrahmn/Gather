@@ -72,20 +72,4 @@ router.get('/me', authenticate, async (req, res) => {
     res.status(200).json(req.user);
 });
 
-// UPDATE LOGGED IN USER
-router.put('/', authenticate, async (req, res) => {
-    let update = await collection.updateOne({ _id: ObjectId(req.user._id) }, {
-        $set: req.body
-    });
-    if (!update) return res.status(400).json({ error: "Invalid Request" });
-    let user = await collection.findOne({ _id: ObjectId(req.user._id) }, { projection: { password: 0 } });
-    res.status(200).json(user);
-});
-
-router.delete('/:uid', async (req, res) => {
-    let user = await collection.deleteOne({ _id: ObjectId(req.params.uid) })
-    if (!user) return res.status(400).json({ error: "Invalid Request" });
-    res.status(200).json({ message: `Delete user ${req.params._id}` })
-});
-
 module.exports = router;
