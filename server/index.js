@@ -3,7 +3,6 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const path = require('path');
-const bodyParser = require('body-parser');
 
 // Mongo
 
@@ -18,7 +17,8 @@ module.exports.mongo = mongo;
 const app = express();
 const initialPath = path.join(__dirname, "public");
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(initialPath));
 
 // ========== BACK END ==========
