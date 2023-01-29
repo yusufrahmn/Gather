@@ -21,6 +21,16 @@ const initialPath = path.join(__dirname, "public");
 app.use(bodyParser.json());
 app.use(express.static(initialPath));
 
+// ========== BACK END ==========
+
+app.use('/api/users', require('./routes/userRoutes.js'));
+
+app.get('/', (req, res) => {
+    res.send('wssp my g')
+});
+
+// ========== FRONT END ==========
+
 app.get('/login', (req, res) => {
   res.sendFile(path.join(initialPath, "login.html"))
 })
@@ -33,7 +43,9 @@ app.get('/home', (req, res)=>{
   res.sendFile(path.join(initialPath, "login.html"))
 })
 
+// APP LISTEN
+
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('✅ Gather is now live on port 3000!');
 });
 
