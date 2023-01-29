@@ -19,7 +19,7 @@ const generateToken = (id) => {
 
 // LOG IN EXISTING USER
 
-router.post('/Login', async (req, res) => {
+router.post('/login', async (req, res) => {
     let { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ error: "Please enter both email and password." });
 
@@ -72,17 +72,13 @@ router.get('/me', authenticate, async (req, res) => {
     res.status(200).json(req.user);
 });
 
-router.put('/:uid', async (req, res) => {
-    let { name, email } = req.body;
-    if (!name || !email) return res.status(400).json({ error: "Invalid Request" });
-
-    let user = await collection.updateOne({ _id: ObjectId(req.params.uid) }, {
-        $set: {
-            name: name,
-            email: email
-        }
+// UPDATE LOGGED IN USER
+router.put('/', authenticate, async (req, res) => {
+    let update = await collection.updateOne({ _id: ObjectId(req.user._id) }, {
+        $set: req.body
     });
-    if (!user) return res.status(400).json({ error: "Invalid Request" });
+    if (!update) return res.status(400).json({ error: "Invalid Request" });
+    let user = await collection.findOne({ _id: ObjectId(req.user._id) }, { projection: { password: 0 } });
     res.status(200).json(user);
 });
 
