@@ -46,7 +46,9 @@ function checkPass(){
     checklogin.Password = document.getElementById('password').value
 }
 
-
+function backLogin(){
+    window.location.replace("login.html");
+}
 
 function checkInfo(){
     console.log(Info)
@@ -56,10 +58,20 @@ function checkCheck(){
     console.log(checklogin)
 }
 
-/*function subLogin(){
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", /*filename, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText
+/*function postRequest(){
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "/api/users/login");
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("RegisterInfo", "application/json");
+
+    xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+        console.log(xhr.status);
+        console.log(xhr.responseText);
+    }};
+
+    let data = Info
+
+    xhr.send(data);
 
 }*/
