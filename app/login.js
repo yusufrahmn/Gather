@@ -24,7 +24,7 @@ function takeName(){
     Info.Name = document.getElementById('Name').value;
 }
 
-"ab".lo
+
 
 function takePassword(){
 
@@ -56,6 +56,23 @@ function checkInfo(){
 
 function checkCheck(){
     console.log(checklogin)
+}
+
+function postRequest(){
+    const options ={
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(Info)
+    }
+    fetch('api/users/',options);
+}
+
+function getRequest(){
+    fetch('api/users/login')
+  .then((response) => response.json())
+  .then((data) => console.log(data));
 }
 
 /*function postRequest(){
