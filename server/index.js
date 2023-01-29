@@ -23,7 +23,8 @@ app.use(express.static(initialPath));
 
 // ========== BACK END ==========
 
-app.use('/api/users', require('./routes/userRoutes.js'));
+const userRoutes = require('./routes/userRoutes.js');
+app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
     res.send('wssp my g')
