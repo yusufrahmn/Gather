@@ -1,23 +1,22 @@
+// Express and Stuff
+
 const express = require('express');
 const dotenv = require('dotenv').config();
 const path = require('path');
 const bodyParser = require('body-parser');
-const knex = require('knex');
 
-//
+// Mongo
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.MONGO_URI;
-const mongo = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const mongo = new MongoClient(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 mongo.connect();
+module.exports.mongo = mongo;
 
- 
-
-//
+// Express Webserver
 
 const app = express();
-
-let initialPath = path.join(__dirname, "public");
+const initialPath = path.join(__dirname, "public");
 
 app.use(bodyParser.json());
 app.use(express.static(initialPath));
@@ -37,9 +36,4 @@ app.get('/home', (req, res)=>{
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
-
-
-module.exports={
-  mongo: mongo
-}
 
