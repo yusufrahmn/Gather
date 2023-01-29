@@ -69,7 +69,7 @@ router.post('/', async (req, res) => {
 // GET LOGGED IN USER
 
 router.get('/me', authenticate, async (req, res) => {
-    res.status(200).json({ message: "Get users" });
+    res.status(200).json(req.user);
 });
 
 router.put('/:uid', async (req, res) => {
