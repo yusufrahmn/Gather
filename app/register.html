@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="inital-scale=1, width=device-width">
+        <link href="styles.css" rel="stylesheet">
+        <title>Register</title>
+
+    </head>
+    <body class="registerPage">
+        <div class="headerReg">
+            To register, please fill out all the forms below: 
+        </div>
+        <div class="formReg">
+            <label for="Name">Name: </label>
+            <input type="text" s id="Name" placeholder="Name"><br><br>
+            <label for="newEmail">Email address: </label>
+            <input type="text" id="newEmail" placeholder="youremail@mail.com" ><br><br>
+            <label for="Pass">Password: </label>
+            <input type="text" id="Pass" placeholder="*********"><br><br>
+            <label for="CPass">Confirm password: </label>
+            <input type="text" id="CPass" placeholder="***********"><br>
+            <br><div class="errorMessage" id="errorMes">Passwords do not match</div>
+            <label for="loc">For the best user experience, it is necessary to allow us to know your location.</label>
+            <button type="submit" class="regBtn"id="loc" onclick="takeName();takePassword();getLocation();checkInfo()">I consent to give my location</button>
+
+        </div>
+        <button type="submit" onclick="backLogin()" class="backButton">Back</button>
+        <script src="login.js"></script>
+    </body>
+</html>
