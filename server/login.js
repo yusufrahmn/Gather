@@ -18,9 +18,9 @@ if(usrName == null){
 
 }else{
     submit.addEventListener('click', () => {
-        fetch('/register-user'{
+        fetch('/register', {
             method:'post',
-            headers: new Headers({'Content-Type': 'application/json'})
+            headers: new Headers({'Content-Type': 'application/json'}),
             body: JSON.stringify({
                 usrName: usrName.value,
                 password: password.value,
