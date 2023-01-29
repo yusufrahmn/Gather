@@ -1,8 +1,11 @@
 // Express and Stuff
 
 const express = require('express');
-const dotenv = require('dotenv').config();
 const path = require('path');
+
+// Some More Stuff
+
+const dotenv = require('dotenv').config();
 
 // Mongo
 
@@ -24,6 +27,7 @@ app.use(express.static(initialPath));
 // ========== BACK END ==========
 
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/posts', require('./routes/postRoutes'));
 
 app.get('/', (req, res) => {
     res.send('wssp my g')
