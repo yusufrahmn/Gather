@@ -12,6 +12,14 @@ router.get('/', async (req, res) => {
     res.status(200).json({ message: "Get users" });
 });
 
+// GENERATE TOKEN (FOR LOGIN AND REGISTRATION)
+
+const generateToken = (id) => {
+    return JsonWebTokenError.sign({ id }. process.env.JWT_SECRET, {
+        expiresIn: '30d'
+    })
+}
+
 // LOG IN EXISTING USER
 
 router.post('/Login', async (req, res) => {
@@ -28,7 +36,8 @@ router.post('/Login', async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        location: user.location
+        location: user.location,
+        token: generateToken(user._id)
     });
 });
 
@@ -48,14 +57,15 @@ router.post('/', async (req, res) => {
         name: name,
         email: email,
         password: hashedPassword,
-        location: location
+        location: location,
     });
     let user = await collection.findOne({ _id: newUser.insertedId });
     res.status(200).json({
         _id: user._id,
         name,
         email,
-        location
+        location,
+        token: generateToken(user._id)
     });
 });
 
