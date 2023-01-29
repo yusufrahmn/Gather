@@ -28,6 +28,8 @@ app.use(express.static(initialPath));
 
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/posts', require('./routes/postRoutes'));
+app.use('/api/login', require('./routes/loginRoutes'));
+app.use('/api/register', require('./routes/registerRoutes'));
 
 app.get('/', (req, res) => {
     res.send('wssp my g')

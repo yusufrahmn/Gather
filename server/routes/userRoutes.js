@@ -10,8 +10,8 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    let { name, email } = req.body;
-    if (!name || !email) return res.status(400).json({ error: "Invalid Request" });
+    let { name, email, password, location } = req.body;
+    if (!name || !email || !password || !location) return res.status(400).json({ error: "Invalid Request" });
     let user = await usersCollection.insertOne({
         name: name,
         email: email
