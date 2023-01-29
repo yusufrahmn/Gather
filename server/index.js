@@ -18,11 +18,11 @@ module.exports.mongo = mongo;
 // Express Webserver
 
 const app = express();
-const initialPath = path.join(__dirname, "public");
+const frontEnd = path.join(__dirname, "..", "app");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(initialPath));
+app.use(express.static(frontEnd));
 
 // ========== BACK END ==========
 
@@ -36,15 +36,15 @@ app.get('/', (req, res) => {
 // ========== FRONT END ==========
 
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(initialPath, "login.html"))
+  res.sendFile(path.join(frontEnd, "login.html"))
 })
 
 app.get('/register', (req, res)=>{
-  res.sendFile(path.join(initialPath, "register.html"))
+  res.sendFile(path.join(frontEnd, "register.html"))
 })
 
 app.get('/home', (req, res)=>{
-  res.sendFile(path.join(initialPath, "login.html"))
+  res.sendFile(path.join(frontEnd, "login.html"))
 })
 
 
